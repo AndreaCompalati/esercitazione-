@@ -68,7 +68,6 @@ Rectangle::~Rectangle() {
 Rectangle::Rectangle(const Rectangle &r):Quadrilateral(r) { 
 
 	cout << "Rectangle - copy constructor" << endl;
-
 	Init(r);
 	
 }
@@ -107,10 +106,12 @@ void Rectangle::Init() {
 
 /// @brief initialization of the object as a copy of an object 
 /// @param r reference to the object that should be copied 
-void Rectangle::Init(const Rectangle &r) {
-	
+void Rectangle::Init(const Rectangle& r) {
+
 	Init();
-	SetDim(r.width,r.height);
+	SetDim(r.width, r.height);
+	strcpy(tarea->string, r.tarea->string);
+	tarea->size = r.tarea->size;
 
 }
 

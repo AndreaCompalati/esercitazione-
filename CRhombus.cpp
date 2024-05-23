@@ -111,7 +111,8 @@ void Rhombus::Init(const Rhombus &r) {
 		
 	Init();
 	SetDim(r.diagL,r.diagS);
-	
+	strcpy(tarea->string, r.tarea->string);
+	tarea->size = r.tarea->size;
 }
 
 /// @brief total reset of the object  
