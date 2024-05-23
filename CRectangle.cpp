@@ -3,9 +3,8 @@
 ///
 ///	Details.
 ///
-#define _CRT_SECURE_NO_WARNINGS
+
 #include<iostream>
-#include <cstring>
 #include "CRectangle.h"
 
 /// @brief default constructor 
@@ -35,26 +34,6 @@ Rectangle::Rectangle(float w, float h) {
 
 }
 
-/// @brief constructor 
-/// @param w width of the rectangle
-/// @param h height of the rectangle 
-/// @param ta struct of type TextArea
-Rectangle::Rectangle(float w, float h, TextArea ta):Quadrilateral(ta) {
-
-	Init();
-	cout << "Rectangle - constructor" << endl;
-
-	if (w <= 0. || h <= 0.) {
-		WarningMessage("constructor: width and height should be > 0");
-		SetDim(0, 0);
-	}
-	else
-		SetDim(w, h);
-		strcpy(tarea->string, ta.string);
-		tarea->size = ta.size;
-
-}
-
 /// @brief destructor 
 Rectangle::~Rectangle() {
 
@@ -65,9 +44,10 @@ Rectangle::~Rectangle() {
 
 /// @brief copy constructor 
 /// @param o reference to the object that should be copied 
-Rectangle::Rectangle(const Rectangle &r):Quadrilateral(r) { 
+Rectangle::Rectangle(const Rectangle &r) { 
 
 	cout << "Rectangle - copy constructor" << endl;
+
 	Init(r);
 	
 }
@@ -80,7 +60,6 @@ Rectangle& Rectangle::operator=(const Rectangle &r) {
 	cout << "Rectangle - operator =" << endl;
 
 	Init(r);
-
 	
 	return *this;
 	
@@ -105,15 +84,10 @@ void Rectangle::Init() {
 
 
 /// @brief initialization of the object as a copy of an object 
-/// @param r reference to the object that should be copied
-/// added the copy of string and size  
-void Rectangle::Init(const Rectangle& r) {
-
+/// @param r reference to the object that should be copied 
+void Rectangle::Init(const Rectangle &r) {
 	Init();
-	SetDim(r.width, r.height);
-	strcpy(tarea->string, r.tarea->string);
-	tarea->size = r.tarea->size;
-
+	SetDim(r.width,r.height);
 }
 
 /// @brief total reset of the object  
@@ -192,7 +166,7 @@ void Rectangle::GetDim(float &w, float &h) {
 
 /// @brief computes the area of the object
 /// @return the area 
-float Rectangle::Area() {
+float Rectangle::GetArea() {
 	
 	return (width*height);
 }
@@ -206,14 +180,6 @@ void Rectangle::ErrorMessage(const char *string) {
 	cout << string << endl;
 
 }
-
-/// @brief to draw a rectangle
-/// output all the charateristics of the rectangle 
-void Rectangle::Drawing() {
-	cout << "disegno un rettangolo con base e altezza rispettivamente : " << width <<" e "<< height << endl;
-	cout << "con font : " << tarea->string << " e dimensioni carattere : " << tarea->size << endl;
-}
-
 
 /// @brief write a warning message 
 /// @param string message to be printed
@@ -233,7 +199,6 @@ void Rectangle::Dump() {
 	
 	cout << "Width = " << width << endl;
 	cout << "Heigth = " << height << endl;
-	cout << "------------" << endl;
 	
 	Quadrilateral::Dump();
 	

@@ -3,7 +3,7 @@
 ///
 ///	Details.
 ///
-#define _CRT_SECURE_NO_WARNINGS
+
 #include<iostream> 
 #include<cmath>
 #include "CRhombus.h"
@@ -35,27 +35,6 @@ Rhombus::Rhombus(float dL, float dS) {
 
 }
 
-/// @brief constructor 
-/// @param dL diagonal (longer)
-/// @param dS diagonal (shorter)
-/// @param ta struct of type TextArea
-Rhombus::Rhombus(float dL, float dS, TextArea ta):Quadrilateral(ta) {
-
-	Init();
-
-	cout << "Rhombus - constructor" << endl;
-
-	if (dL <= 0. || dS <= 0.) {
-		WarningMessage("constructor: diagonals should be > 0");
-		SetDim(0, 0);
-	}
-	else
-		SetDim(dL, dS);
-		strcpy(tarea->string, ta.string);
-		tarea->size = ta.size;
-
-}
-
 /// @brief destructor 
 Rhombus::~Rhombus() {
 
@@ -66,7 +45,7 @@ Rhombus::~Rhombus() {
 
 /// @brief copy constructor 
 /// @param o reference to the object that should be copied 
-Rhombus::Rhombus(const Rhombus &r):Quadrilateral(r) { 
+Rhombus::Rhombus(const Rhombus &r) { 
 
 	cout << "Rhombus - copy constructor" << endl;
 
@@ -107,13 +86,9 @@ void Rhombus::Init() {
 
 /// @brief initialization of the object as a copy of an object 
 /// @param r reference to the object that should be copied 
-/// added the copy of string and size  
 void Rhombus::Init(const Rhombus &r) {
-		
 	Init();
 	SetDim(r.diagL,r.diagS);
-	strcpy(tarea->string, r.tarea->string);
-	tarea->size = r.tarea->size;
 }
 
 /// @brief total reset of the object  
@@ -206,7 +181,7 @@ void Rhombus::GetDim(float &dL, float &dS) {
 
 /// @brief computes the area of the object
 /// @return the area 
-float Rhombus::Area() {
+float Rhombus::GetArea() {
 	
 	return (diagL*diagS/2.);
 }
@@ -245,14 +220,6 @@ void Rhombus::Dump() {
 	
 	cout << endl;
 
-}
-
-
-/// @brief to draw a rhombus
-/// output all the charateristics of the rhombus
-void Rhombus::Drawing() {
-	cout << "disegno un rombo con diagonale minore e maggiore rispettivamente : " << diagS << " e " << diagL << endl;
-	cout << "con font : "  << tarea->string <<" e dimensioni carattere : "  << tarea->size << endl;
 }
 
 
