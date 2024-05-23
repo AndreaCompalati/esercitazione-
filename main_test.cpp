@@ -50,7 +50,6 @@ int main() {
 	Show();
 	
 	rectA.SetFontSize(20);
-	rectA.SetText(t3);
 	rectC=rectA;
 	rectB.SetTextArea(a2);
 	rhoB.SetText(t3);

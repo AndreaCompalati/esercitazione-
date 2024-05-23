@@ -79,7 +79,6 @@ bool Quadrilateral::operator==(const Quadrilateral &o) {
 /// @brief default initialization of the object
 void Quadrilateral::Init() {
 	
-	TextArea str;
 	tarea = new(TextArea);
 	tarea->size = 0;
 	strcpy(tarea->string, "standard");
